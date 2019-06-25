@@ -13,7 +13,10 @@ export const fetchNews = () => async dispatch => {
 export const fetchSelectedNews = url => async dispatch => {
   const response = await NYTimes.get('/all-sections/1.json');
   const news = response.data.results.filter(
-    news => news.url.substring(news.url.lastIndexOf('/') + 1) === url
+    news =>
+      news.url
+        .substring(news.url.lastIndexOf('/') + 1)
+        .replace(/\.[^/.]+$/, '') === url
   );
 
   // console.log(news);

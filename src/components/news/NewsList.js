@@ -13,7 +13,9 @@ class NewsList extends React.Component {
     // console.log(results);
     return results.map(news => (
       <Link
-        to={`/news/${news.url.substring(news.url.lastIndexOf('/') + 1)}`}
+        to={`/news/${news.url
+          .substring(news.url.lastIndexOf('/') + 1)
+          .replace(/\.[^/.]+$/, '')}`}
         className="item"
         key={news.id}>
         <div className="right floated content">
